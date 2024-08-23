@@ -1,0 +1,29 @@
+- name: create service user
+  user:
+    name: "{{ kibana_run_user }}"
+    shell: /usr/sbin/nologin
+    create_home: no
+    state: present
+
+- name: ensure install dir is exists
+  file:
+    path: "{{ kibana_install_dir }}"
+    state: directory
+    owner: "{{ kibana_run_user }}"
+    group: "{{ kibana_run_group }}"
+
+- name: check kibana is installed or not
+  stat:
+    path: "{{ kibana_install_dir }}/bin/kibana"
+  register: kibana_status
+
+- name: download kibana
+  unarchive:
+    src: "{{ kibana_download_url }}"
+    dest: "{{ kibana_install_dir }}"
+    remote_src: yes
+    extra_opts: "--strip-components=1"
+    owner: "{{ kibana_run_user }}"
+    group: "{{ kibana_run_group }}"
+  when: not kibana_status.stat.exists
+ 

@@ -1,0 +1,18 @@
+server.port: {{ kibana_server_port }}
+server.host: 0.0.0.0
+server.name: "{{ inventory_hostname }}"
+server.publicBaseUrl: "{{ kibana_configs.publicBaseUrl }}"
+
+server.ssl.enabled: true
+server.ssl.certificate: {{ kibana_install_dir }}/config/certs/wildcard.net.pem
+server.ssl.key: {{ kibana_install_dir }}/config/certs/wildcard.net-key.pem
+
+elasticsearch.hosts: 
+{% for elasticsearch_host in kibana_configs.elasticsearch_hosts %}
+  - {{ elasticsearch_host }}
+{% endfor %}
+elasticsearch.username: "{{ kibana_configs.elasticsearch_username }}"
+elasticsearch.password: "{{ kibana_configs.elasticsearch_password }}"
+elasticsearch.ssl.verificationMode: none
+
+telemetry.enabled: false

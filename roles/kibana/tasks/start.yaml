@@ -1,0 +1,4 @@
+- name: start service
+  service:
+    name: "{{ kibana_service_name }}"
+    state: started

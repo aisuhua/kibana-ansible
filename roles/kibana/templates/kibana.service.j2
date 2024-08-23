@@ -1,0 +1,16 @@
+[Unit]
+Description=Kibana {{ inventory_hostname }}
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User={{ kibana_run_user }}
+Group={{ kibana_run_group }}
+WorkingDirectory={{ kibana_install_dir }}
+ExecStart={{ kibana_install_dir }}/bin/kibana
+StandardOutput=journal
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target
