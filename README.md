@@ -24,7 +24,7 @@ ansible-playbook remove.yaml
 
 浏览器打开 https://172.31.96.151:15603
 
-或者将证书 `/path/to/kibana-ansible/roles/kibana/files/certs/ca.pem` 导入到浏览器后，用类似 https://kibana1.wildcard.net:15603 的域名（kibana1 随意）可以以受信的方式访问。
+或者将证书 `/path/to/kibana-ansible/roles/kibana/files/certs/ca.pem` 导入到浏览器后，用类似 https://kibana1.wildcard.net:15603 的域名（kibana1 随意）可以以信任的方式访问。
 
 ## 特点
 
