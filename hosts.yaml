@@ -1,20 +1,20 @@
 ungrouped:
   hosts:
     kibana1-es1:
-      ansible_ssh_host: 172.31.96.149 
+      ansible_ssh_host: 172.31.96.151
       kibana_server_port: 15603
   vars:
     kibana_version: 8.14.3
-    kibana_install_dir: /opt/kibana/{{ kibana_version }}/{{ inventory_hostname }}
-    kibana_service_name: kibana-{{ kibana_version }}-{{ inventory_hostname  }}
+    kibana_install_dir: "/opt/kibana/{{ kibana_version }}/{{ inventory_hostname }}"
+    kibana_service_name: "kibana-{{ kibana_version }}-{{ inventory_hostname  }}"
     kibana_run_user: kibana
     kibana_run_group: kibana
-    kibana_download_url: http://192.168.88.61/other/kibana-8.14.3-linux-x86_64.tar.gz
+    kibana_download_url: http://172.31.96.1/elastic/8.14.3/kibana-8.14.3-linux-x86_64.tar.gz
     kibana_configs:
-      publicBaseUrl: https://{{ ansible_ssh_host }}:{{ kibana_server_port }}
+      publicBaseUrl: "https://{{ ansible_ssh_host }}:{{ kibana_server_port }}"
       elasticsearch_hosts:
-        - https://172.31.96.149:19201
-        - https://172.31.96.149:19202
-        - https://172.31.96.149:19203
+        - https://172.31.96.151:19201
+        - https://172.31.96.151:19202
+        - https://172.31.96.151:19203
       elasticsearch_username: kibana_system
-      elasticsearch_password: akP2$HTw
+      elasticsearch_password: Luck@u99
